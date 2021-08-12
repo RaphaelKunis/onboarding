@@ -11,9 +11,10 @@ Starting with onboarding tutorial
 - installed postman
 - created git repository (https://github.com/RaphaelKunis/onboarding.git)
 - installed mysql Workbench
+- [x] all done
 
 # Steps
 ## Step 1)
-- new folder demo_1 in git repository
+- new folder springboothello in git repository
 - https://start.spring.io/
-- 
+- [x] example is running 
