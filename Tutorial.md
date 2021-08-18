@@ -34,9 +34,12 @@ Starting with onboarding tutorial
 - new folder spring-boot-mysql in git repository (web + mysql + jpa + spring security)
   - hint: when spring security is chosen for spring Initializr then a login page is presented
     - use "user" as username and the password given in the cmd-line as login data in browser
-    - for tests with curl uncomment the dependency in pom.xml at first
+    - for tests with curl uncomment the dependency in pom.xml at first as it has some difficulties to manage
 - empty project from https://start.spring.io (https://spring.io/guides/gs/accessing-data-mysql/)
 - ![images/img_step3.png](images/img_step3.png)
 - started docker container with mysql (see step 2)
   - added account with mysql workbench (springuser, ThePassword1234)
   - created database db_example;
+  - `create database db_example; -- Creates the new database`
+  - `create user 'springuser'@'%' identified by 'ThePassword1234'; -- Creates the user`
+  - `grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database`
