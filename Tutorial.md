@@ -38,8 +38,8 @@ Starting with onboarding tutorial
 - empty project from https://start.spring.io (https://spring.io/guides/gs/accessing-data-mysql/)
 - ![images/img_step3.png](images/img_step3.png)
 - started docker container with mysql (see step 2)
-  - added account with mysql workbench (springuser, ThePassword1234)
-  - created database db_example;
-  - `create database db_example; -- Creates the new database`
-  - `create user 'springuser'@'%' identified by 'ThePassword1234'; -- Creates the user`
-  - `grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database`
+  - added account with mysql workbench (springuser, ThePassword1234) and created database db_example;
+    - see [sql_create_script.sql](sql_create_script.sql)
+- added GetRequest for user by id
+  - todo: check valid int as param and ?format null output?
+    
