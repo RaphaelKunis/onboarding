@@ -41,5 +41,13 @@ Starting with onboarding tutorial
   - added account with mysql workbench (springuser, ThePassword1234) and created database db_example;
     - see [sql_create_script.sql](sql_create_script.sql)
 - added GetRequest for user by id
-  - todo: check valid int as param and ?format null output?
+  - [ ] todo: check valid int as param and ?format null output?
+- added Service class
+  - [ ] todo: implement addUser method in UserService
+    - add better result
+- added input validation
+  - [x] validation with bean annotation
+    - information found on [https://www.baeldung.com/javax-validation](https://www.baeldung.com/spring-service-layer-validation) and [https://www.baeldung.com/spring-service-layer-validation](https://www.baeldung.com/spring-service-layer-validation)
+  - additional validation
+    - [ ] todo
     

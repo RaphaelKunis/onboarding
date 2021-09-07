@@ -1,5 +1,5 @@
 package de.raphaelkunis.springbootmysql;
 
 class Validator {
-    // TODO
+    // TODO - add sample Validation things additional to Bean annotations
 }
