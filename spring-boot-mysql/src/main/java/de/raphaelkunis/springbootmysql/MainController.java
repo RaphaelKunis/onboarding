@@ -8,25 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Optional;
-import javax.validation.Valid;
 
 @Controller                     // This means that this class is a Controller
 @RequestMapping(path="/demo")   // This means URL's start with /demo (after Application path)
 public class MainController {
 
-    @Autowired // This means to get the bean called userRepository
+    @Autowired // This means to get the bean called userRepository ? should this go completely to userService ?
     private UserRepository userRepository;
-
     @Autowired
     private UserService userService;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewUser (@Valid @RequestParam String name
-            , @Valid @RequestParam String email) {
+    public @ResponseBody String addNewUser (@RequestParam String name
+            , @RequestParam String email) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        // @Valid means we validate against the validation annotations in the User class, i.e. @NotBlank
-
         return userService.addNewUser(name, email);
     }
 
@@ -36,11 +32,9 @@ public class MainController {
         return userRepository.findAll();
     }
 
-    /* rk1 added new method for retrieving user by id
-     * TODO:
-     *  - check return off null */
+    /* rk1 added new method for retrieving user by id */
     @GetMapping(path="/getUser")
-    public @ResponseBody Optional<User> getUserById(@Valid @RequestParam int id) {
+    public @ResponseBody Optional<User> getUserById(@RequestParam Integer id) {
         // This returns a JSON or XML with the user if exists
         return userRepository.findById(id);
     }

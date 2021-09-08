@@ -24,10 +24,12 @@ Starting with onboarding tutorial
 - [x] example is running 
 
 # Step 2)
-- docker pull mysql
-- docker run --name mysql_docker -e MYSQL_ROOT_PASSWORD=<PWD> -p 3306:3306 -d mysql
-- docker ps
+- `docker pull mysql`
+- `docker run --name mysql_docker -e MYSQL_ROOT_PASSWORD=<PWD> -p 3306:3306 -d mysql`
+- `docker ps`
 - [x] docker mysql is running 
+- Additional tip: to reuse container after reboot use `docker restart mysql_docker`
+  - created tables and data are available
 
 #Step 3) 
 - mysql spring boot app with mysql connection
@@ -40,14 +42,13 @@ Starting with onboarding tutorial
 - started docker container with mysql (see step 2)
   - added account with mysql workbench (springuser, ThePassword1234) and created database db_example;
     - see [sql_create_script.sql](sql_create_script.sql)
-- added GetRequest for user by id
-  - [ ] todo: check valid int as param and ?format null output?
+- added GetRequest for user by id `/demo/getUser`
 - added Service class
-  - [ ] todo: implement addUser method in UserService
-    - add better result
+  - [x] todo: implement addUser method in UserService
+    - [ ] add better result
 - added input validation
   - [x] validation with bean annotation
     - information found on [https://www.baeldung.com/javax-validation](https://www.baeldung.com/spring-service-layer-validation) and [https://www.baeldung.com/spring-service-layer-validation](https://www.baeldung.com/spring-service-layer-validation)
-  - additional validation
-    - [ ] todo
-    
+- [ ] todo add spring security 
+  - uncomment `spring-boot-starter-security` in pom
+  - test and try some things
