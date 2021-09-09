@@ -23,7 +23,7 @@ Starting with onboarding tutorial
 - https://start.spring.io/
 - [x] example is running 
 
-# Step 2)
+## Step 2)
 - `docker pull mysql`
 - `docker run --name mysql_docker -e MYSQL_ROOT_PASSWORD=<PWD> -p 3306:3306 -d mysql`
 - `docker ps`
@@ -31,7 +31,7 @@ Starting with onboarding tutorial
 - Additional tip: to reuse container after reboot use `docker restart mysql_docker`
   - created tables and data are available
 
-#Step 3) 
+## Step 3) 
 - mysql spring boot app with mysql connection
 - new folder spring-boot-mysql in git repository (web + mysql + jpa + spring security)
   - hint: when spring security is chosen for spring Initializr then a login page is presented
