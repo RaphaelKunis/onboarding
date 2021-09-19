@@ -18,6 +18,13 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+	/* Test some new features */
+	@GetMapping(path="/", produces = "application/json; charset=UTF-8")
+	@ResponseBody 
+	public String sayHello() {
+		return "Hello";
+	}
+
     @PostMapping(path="/add") // Map ONLY POST Requests
     public @ResponseBody String addNewUser (@RequestParam String name
             , @RequestParam String email) {

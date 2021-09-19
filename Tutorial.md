@@ -16,13 +16,17 @@ Starting with onboarding tutorial
 - [x] all done
 - Additional
 	- install _Windows Terminal_ https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1#activetab=pivot:overviewtab
-
+***
+	
 # Steps
 ## Step 1)
 - new folder spring-boot-hello in git repository
 - https://start.spring.io/
 - [x] example is running 
-
+- hints for curl
+  - do not use curl in PowerShell as it works differently and the example from https://start.spring.io/ do not work   
+***
+  
 # Step 2)
 - `docker pull mysql`
 - `docker run --name mysql_docker -e MYSQL_ROOT_PASSWORD=<PWD> -p 3306:3306 -d mysql`
@@ -30,13 +34,16 @@ Starting with onboarding tutorial
 - [x] docker mysql is running 
 - Additional tip: to reuse container after reboot use `docker restart mysql_docker`
   - created tables and data are available
-
+***
+  
 #Step 3) 
 - mysql spring boot app with mysql connection
 - new folder spring-boot-mysql in git repository (web + mysql + jpa + spring security)
   - hint: when spring security is chosen for spring Initializr then a login page is presented
     - use "user" as username and the password given in the cmd-line as login data in browser
     - for tests with curl uncomment the dependency in pom.xml at first as it has some difficulties to manage
+      - curl with pwd: `curl -u user:pwd http://localhost:8080/demo/getUser`
+      - curl with post: `curl -u user:pwd -X POST -F 'name=Name' -F 'email=e@mail.de' http://localhost:8080/demo/add`
 - empty project from https://start.spring.io (https://spring.io/guides/gs/accessing-data-mysql/)
 - ![images/img_step3.png](images/img_step3.png)
 - started docker container with mysql (see step 2)
@@ -45,10 +52,24 @@ Starting with onboarding tutorial
 - added GetRequest for user by id `/demo/getUser`
 - added Service class
   - [x] todo: implement addUser method in UserService
-    - [ ] add better result
+    - [ ] add better result -> JSON with HTTP error 400
 - added input validation
   - [x] validation with bean annotation
     - information found on [https://www.baeldung.com/javax-validation](https://www.baeldung.com/spring-service-layer-validation) and [https://www.baeldung.com/spring-service-layer-validation](https://www.baeldung.com/spring-service-layer-validation)
 - [ ] todo add spring security 
   - uncomment `spring-boot-starter-security` in pom
   - test and try some things
+    - now works in postman for all GET-methods
+    - error in POST-method add -> 400 : "Forbidden"
+      - maybe use [https://spring.io/guides/gs/securing-web/](https://spring.io/guides/gs/securing-web/)
+      - added WebSecurityConfig-class
+***
+      
+# Step 4) openAPI-spec for endpoints
+  - installed plugin for swagger (Zalando SE) 
+  - added file openapi.yaml 
+    - tutorial/definition on https://swagger.io/docs/specification/basic-structure/, http://editor.swagger.io
+    - [x] tested it in editor on https://editor.swagger.io/
+    - [x] import in Postman
+      - Generate a collection resulted in error but the collection was there 
+      - missing {{baseUrl}} in get-Requests -> seems to be standard behaviour

@@ -16,7 +16,15 @@ public class UserService {
     private Validator validator;
 
     /** Add new user after validating the input
-     * todo: return better result, i.e. the result of userRepository.findById(id) -> JSON */
+     * todo: return better result, i.e. the result of userRepository.findById(id) -> JSON
+     * result should look like
+     *     {
+     *          "timestamp": "2021-09-14T20:34:54.087+00:00",
+     *          "status": 400,
+     *          "error": "Bad Request - what was wrong",
+     *          "path": "/demo/add"
+     *     }
+     */
     public String addNewUser(String name, String email) {
 
         String retVal = "Saved";
