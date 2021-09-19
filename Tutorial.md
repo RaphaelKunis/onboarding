@@ -27,7 +27,7 @@ Starting with onboarding tutorial
   - do not use curl in PowerShell as it works differently and the example from https://start.spring.io/ do not work   
 ***
   
-# Step 2)
+## Step 2)
 - `docker pull mysql`
 - `docker run --name mysql_docker -e MYSQL_ROOT_PASSWORD=<PWD> -p 3306:3306 -d mysql`
 - `docker ps`
@@ -36,7 +36,7 @@ Starting with onboarding tutorial
   - created tables and data are available
 ***
   
-#Step 3) 
+## Step 3) 
 - mysql spring boot app with mysql connection
 - new folder spring-boot-mysql in git repository (web + mysql + jpa + spring security)
   - hint: when spring security is chosen for spring Initializr then a login page is presented
@@ -48,7 +48,7 @@ Starting with onboarding tutorial
 - ![images/img_step3.png](images/img_step3.png)
 - started docker container with mysql (see step 2)
   - added account with mysql workbench (springuser, ThePassword1234) and created database db_example;
-    - see [sql_create_script.sql](sql_create_script.sql)
+    - see ![sql_create_script.sql](spring-boot-mysql/sql_create_script.sql)
 - added GetRequest for user by id `/demo/getUser`
 - added Service class
   - [x] todo: implement addUser method in UserService
@@ -65,7 +65,7 @@ Starting with onboarding tutorial
       - added WebSecurityConfig-class
 ***
       
-# Step 4) openAPI-spec for endpoints
+## Step 4) openAPI-spec for endpoints
   - installed plugin for swagger (Zalando SE) 
   - added file openapi.yaml 
     - tutorial/definition on https://swagger.io/docs/specification/basic-structure/, http://editor.swagger.io
