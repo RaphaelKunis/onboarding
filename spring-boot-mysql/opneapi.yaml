@@ -1,0 +1,94 @@
+openapi: 3.0.1
+info:
+  title: Sample mySQL Spring Boot Project for onboarding
+  description: This is my first Spring Bott and openapi project. It lets you lsit a set of users, enter name and email of a user and find a user by an id.
+  version: '0.1'
+  
+servers:
+  - url: 'http://localhost:8080/'
+    description: my local server for spring boot tests
+    
+components:
+  schemas:
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Jessica Smith'
+        email:
+          type: string
+          example: 'Jessica.Smith@gmail.com'
+    UserFull:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 4
+        name:
+          type: string
+          example: 'Jessica Smith'
+        email:
+          type: string
+          example: 'Jessica.Smith@gmail.com'
+
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      
+security:
+  - BasicAuth: []  
+
+paths:
+  /demo/:
+    get:
+      summary: base path. just returns 200
+      description: just the base path without any logic
+      responses:
+        '200':
+           description: 'returns "Hello"'
+           content:
+              # application/json:
+              #   schema:
+              #     ...
+              text/plain:
+                schema:
+                  type: string
+                  example: 'Hello'
+      
+  /demo/getUser/{id}:
+    get:
+      summary: 'Returns a user by ID.'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user to return.
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: A user object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFull'
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+#    /demo/all:
+#    ... TODO ...
+
+# POST may be a problem
+#    /demo/add/{name, email}:
+#    ... TODO ...
