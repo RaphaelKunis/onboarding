@@ -63,6 +63,9 @@ Starting with onboarding tutorial
     - error in POST-method add -> 400 : "Forbidden"
       - maybe use [https://spring.io/guides/gs/securing-web/](https://spring.io/guides/gs/securing-web/)
       - added WebSecurityConfig-class
+  - additional resources for training
+    - [https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/](https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/)  
+
 ***
       
 ## Step 4) openAPI-spec for endpoints

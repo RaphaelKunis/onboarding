@@ -20,8 +20,7 @@ public class MainController {
 
 	/* Test some new features */
 	@GetMapping(path="/", produces = "application/json; charset=UTF-8")
-	@ResponseBody 
-	public String sayHello() {
+	public @ResponseBody String sayHello() {
 		return "Hello";
 	}
 
@@ -45,4 +44,12 @@ public class MainController {
         // This returns a JSON or XML with the user if exists
         return userRepository.findById(id);
     }
+
+    /* error page for browser in case of problems */
+    /*
+    @GetMapping(path="/error")
+    public @ResponseBody String error() {     return "Something bad happened - this replaces the Whitelabel Error Page ";}
+    does not work that way -> use public class AppErrorController implements ErrorController{ instead
+    see https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error
+    */
 }

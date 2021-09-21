@@ -20,8 +20,8 @@ public class UserService {
      * result should look like
      *     {
      *          "timestamp": "2021-09-14T20:34:54.087+00:00",
-     *          "status": 400,
-     *          "error": "Bad Request - what was wrong",
+     *          "status": 200,
+     *          "message": "user was added",
      *          "path": "/demo/add"
      *     }
      */
