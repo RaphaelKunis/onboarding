@@ -24,6 +24,7 @@ public class UserService {
      *          "message": "user was added",
      *          "path": "/demo/add"
      *     }
+     *     May be done with Responsebody an an object with the given data
      */
     public String addNewUser(String name, String email) {
 
@@ -32,6 +33,9 @@ public class UserService {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
+
+        // just for testing
+        //System.out.println("called addNewUser");
 
         Set<ConstraintViolation<User>> violations = validator.validate(user);
         if (!violations.isEmpty()) {

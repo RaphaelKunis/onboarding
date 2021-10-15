@@ -49,7 +49,7 @@ public class MainController {
     /*
     @GetMapping(path="/error")
     public @ResponseBody String error() {     return "Something bad happened - this replaces the Whitelabel Error Page ";}
-    does not work that way -> use public class AppErrorController implements ErrorController{ instead
+    does not work that way -> use public class AppErrorController implements ErrorController instead
     see https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error
     */
 }
