@@ -63,10 +63,23 @@ Starting with onboarding tutorial
     - error in POST-method add -> 400 : "Forbidden"
       - maybe use [https://spring.io/guides/gs/securing-web/](https://spring.io/guides/gs/securing-web/)
       - added WebSecurityConfig-class
+      - [x] hint from Andreas: CSRF-protection my be the problem -> google and test it
+        - solution found on https://www.javainuse.com/spring/boot_security_csrf
+        - add //http.csrf().disable(); to WebSecurityConfig -> for real world solutions not good.
   - additional resources for training
     - [https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/](https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/)  
 
-***
+## presentation/discussion with Andreas and Sebastian
+  - topic 1) Service Layer - need to move ALL services from Controller to Service Layer 
+    ![images/20211015_Diskussion_ServiceLayer.jpg](images/20211015_Diskussion_ServiceLayer.jpg)
+    - [x] todo
+  - topic 2) packaging
+    - how could the project be divided into packages
+    - functional (mvc) or domain based (User)
+    - [x] second one was chosen
+  - [ ] implement better password behaviour
+    - [x] move passwords to config file
+    - hash passwords 
       
 ## Step 4) openAPI-spec for endpoints
   - installed plugin for swagger (Zalando SE) 
@@ -75,4 +88,13 @@ Starting with onboarding tutorial
     - [x] tested it in editor on https://editor.swagger.io/
     - [x] import in Postman
       - Generate a collection resulted in error but the collection was there 
-      - missing {{baseUrl}} in get-Requests -> seems to be standard behaviour
+      - {{baseUrl}} in get-Requests -> set as variable 
+      
+## Step 5) Testing
+  - software testing pyramid (see discussion)
+  - [] write some unit tests
+  - [] write a module tests -> @SprinBootTest
+  - [] test with postman
+
+## Other things
+  - enable code  

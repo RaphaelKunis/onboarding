@@ -1,4 +1,4 @@
-package de.raphaelkunis.springbootmysql;
+package de.raphaelkunis.springbootmysql.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
