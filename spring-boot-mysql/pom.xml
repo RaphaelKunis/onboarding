@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>de.raphaelkunis</groupId>
 	<artifactId>springbootmysql</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>springbootmysql</name>
-	<description>Demo project for Spring Boot - access relational data</description>
+	<description>Demo project for Spring Boot - access relational data.</description>
 	<properties>
 		<java.version>16</java.version>
 	</properties>

@@ -77,10 +77,19 @@ Starting with onboarding tutorial
     - how could the project be divided into packages
     - functional (mvc) or domain based (User)
     - [x] second one was chosen
-  - [ ] implement better password behaviour
-    - [x] move passwords to config file
-    - hash passwords 
-      
+    - [ ] implement better password behaviour
+      - [x] move passwords to config file
+      - [ ] hash passwords with bcrypt
+      - [ ] use std password code snippet
+
+      ```java
+      PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        
+      User.withUsername(user.getName())
+          .password(password.startsWith("{bcrypt}") ? password : encoder.encode(password))
+          .roles(user.getRoles().toArray(new String[0])).build();
+      ```
+
 ## Step 4) openAPI-spec for endpoints
   - installed plugin for swagger (Zalando SE) 
   - added file openapi.yaml 
@@ -92,9 +101,24 @@ Starting with onboarding tutorial
       
 ## Step 5) Testing
   - software testing pyramid (see discussion)
-  - [] write some unit tests
-  - [] write a module tests -> @SprinBootTest
-  - [] test with postman
+    - [ ] write some unit tests
+    - [ ] write a module tests -> @SpringBootTest
+    - [ ] test with postman
+  - guides/tutorials/hints
+    - ...
+    - 
 
 ## Other things
-  - enable code  
+  - [ ] enable spring boot framework support in IntelliJ
+  - Problems with docker desktop update in November
+    - stuck on startup in `Docker Engine starting...` 
+    - solution
+      ```
+      Open "Window Security"
+      Open "App & Browser control"
+      Click "Exploit protection settings" at the bottom
+      Switch to "Program settings" tab
+      Locate "C:\WINDOWS\System32\vmcompute.exe" in the list and expand it
+      Click "Edit"
+      Scroll down to "Code flow guard (CFG)" and uncheck "Override system settings"
+      ```
