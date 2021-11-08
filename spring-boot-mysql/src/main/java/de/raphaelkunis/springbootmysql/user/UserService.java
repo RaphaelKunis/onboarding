@@ -1,20 +1,8 @@
 package de.raphaelkunis.springbootmysql.user;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import javax.validation.Validator;
-import javax.validation.ConstraintViolation;
-import java.util.Set;
 import java.util.Optional;
 
-/** Proviedes services for manipulating user data */
-@Service
-public class UserService {
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private Validator validator;
+public interface UserService {
 
     /** Add new user after validating the input
      * todo: return better result, i.e. the result of userRepository.findById(id) -> JSON
@@ -27,49 +15,15 @@ public class UserService {
      *     }
      *     May be done with Responsebody an an object with the given data
      */
-    public String addNewUser(String name, String email) {
-
-        String retVal = "Saved";
-
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-
-        // just for testing
-        //System.out.println("called addNewUser");
-
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
-        if (!violations.isEmpty()) {
-            StringBuilder sb = new StringBuilder();
-            for (ConstraintViolation<User> constraintViolation : violations) {
-                sb.append(constraintViolation.getMessage());
-            }
-            // throw new ConstraintViolationException("Error occurred: " + sb.toString(), violations);
-            retVal = "Validation Error: " + sb.toString() + "; ";
-        } else {
-            try {
-                userRepository.save(user);
-            } catch (Exception e) {
-                retVal = "Error: " + e.getMessage();    // should be less internal
-            }
-        }
-
-        return retVal;
-    }
+    String addNewUser(String name, String email);
 
     /**
      * Return a list of all users or an empty list
      */
-    public Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
-        return userRepository.findAll();
-    }
+    Iterable<User> getAllUsers();
 
     /**
      * Return the user of a given id or empty
      */
-    public Optional<User> getUserById(Integer id) {
-        // This returns a JSON or XML with the user if exists
-        return userRepository.findById(id);
-    }
+    Optional<User> getUserById(Integer id);
 }

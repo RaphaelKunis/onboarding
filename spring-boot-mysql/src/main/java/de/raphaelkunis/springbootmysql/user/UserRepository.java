@@ -1,7 +1,6 @@
 package de.raphaelkunis.springbootmysql.user;
 
 import org.springframework.data.repository.CrudRepository;
-//import java.de.raphaelkunis.springbootmysql.user.User;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete

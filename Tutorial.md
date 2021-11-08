@@ -56,7 +56,7 @@ Starting with onboarding tutorial
 - added input validation
   - [x] validation with bean annotation
     - information found on [https://www.baeldung.com/javax-validation](https://www.baeldung.com/spring-service-layer-validation) and [https://www.baeldung.com/spring-service-layer-validation](https://www.baeldung.com/spring-service-layer-validation)
-- [ ] todo add spring security 
+- [x] todo add spring security 
   - uncomment `spring-boot-starter-security` in pom
   - test and try some things
     - now works in postman for all GET-methods
@@ -67,8 +67,8 @@ Starting with onboarding tutorial
         - solution found on https://www.javainuse.com/spring/boot_security_csrf
         - add //http.csrf().disable(); to WebSecurityConfig -> for real world solutions not good.
   - additional resources for training
-    - [https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/](https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/)  
-
+    - [https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/](https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/)
+  
 ## presentation/discussion with Andreas and Sebastian
   - topic 1) Service Layer - need to move ALL services from Controller to Service Layer 
     ![images/20211015_Diskussion_ServiceLayer.jpg](images/20211015_Diskussion_ServiceLayer.jpg)
@@ -77,6 +77,7 @@ Starting with onboarding tutorial
     - how could the project be divided into packages
     - functional (mvc) or domain based (User)
     - [x] second one was chosen
+      - UserService becomes Interface and UserServiceImpl was added   
     - [ ] implement better password behaviour
       - [x] move passwords to config file
       - [ ] hash passwords with bcrypt
@@ -105,8 +106,11 @@ Starting with onboarding tutorial
     - [ ] write a module tests -> @SpringBootTest
     - [ ] test with postman
   - guides/tutorials/hints
-    - ...
-    - 
+    - https://www.baeldung.com/spring-boot-testing
+      - unit tests and spring boot tests
+  - what i have done 
+    - add spring-boot-starter to maven
+    - add h2database to maven thus we do not need a real database (h2 = in memory db)
 
 ## Other things
   - [ ] enable spring boot framework support in IntelliJ
@@ -122,3 +126,6 @@ Starting with onboarding tutorial
       Click "Edit"
       Scroll down to "Code flow guard (CFG)" and uncheck "Override system settings"
       ```
+
+## Docker
+  - https://spring.io/guides/gs/spring-boot-docker/
