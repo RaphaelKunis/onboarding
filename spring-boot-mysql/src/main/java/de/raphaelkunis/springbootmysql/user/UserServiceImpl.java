@@ -2,8 +2,10 @@ package de.raphaelkunis.springbootmysql.user;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.validation.Validator;
 import javax.validation.ConstraintViolation;
+
 import java.util.Set;
 import java.util.Optional;
 
@@ -12,9 +14,11 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+    /* @Autowired -> does not work for tests without SpringBootTest */
     @Autowired
     private UserRepository userRepository;
 
+    /* @Autowired -> does not work for tests without SpringBootTest */
     @Autowired
     private Validator validator;
 
@@ -34,9 +38,9 @@ public class UserServiceImpl implements UserService {
 
         String retVal = "Saved";
 
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
+        User user = new User(name, email);
+        //user.setName(name);
+        //user.setEmail(email);
 
         // just for testing
         //System.out.println("called addNewUser");

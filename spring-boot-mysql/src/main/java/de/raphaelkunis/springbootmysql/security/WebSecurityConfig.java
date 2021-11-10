@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // hints: did not work without .passwordEncoder(NoOpPasswordEncoder.getInstance())
     }
 
-    /*
+    /* TODO: test the snippet from Sebastian
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password(pwd).roles("USER").and()
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()                           // disable CSRF - otherwise POST will not work for the simple example
                 .authorizeRequests()
-                .antMatchers("/demo").permitAll()       // for pages without authentication put this at first
+                .antMatchers("/demo/hello").permitAll()       // for pages without authentication put this at first
                 .anyRequest().authenticated()           // the rest needs authentication
                 .and().formLogin()
                 .and().httpBasic();

@@ -1,6 +1,5 @@
 package de.raphaelkunis.springbootmysql;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ public class MainController {
     private DemoService demoService;
 
 	/* Test some new features */
-	@GetMapping(path="/", produces = "application/plain; charset=UTF-8")
+	@GetMapping(path="/hello")                                          // , produces = "application/plain; charset=UTF-8")
 	public @ResponseBody String sayHello() {
 		return demoService.sayHello();
 	}
@@ -46,12 +45,4 @@ public class MainController {
     public @ResponseBody Optional<User> getUserById(@RequestParam Integer id) {
         return userService.getUserById(id);
     }
-
-    /* error page for browser in case of problems */
-    /*
-    @GetMapping(path="/error")
-    public @ResponseBody String error() {     return "Something bad happened - this replaces the Whitelabel Error Page ";}
-    does not work that way -> use public class AppErrorController implements ErrorController instead
-    see https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error
-    */
 }

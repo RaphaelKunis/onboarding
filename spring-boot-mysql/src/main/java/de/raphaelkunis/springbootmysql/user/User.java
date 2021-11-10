@@ -21,6 +21,18 @@ public class User {
     @Email(message = "Email should be valid")           // added for input validation
     private String email;
 
+    public User(String name, String email) {
+        if (name != null) this.name = name;
+        if (email != null) this.email = email;
+    }
+
+    public User(String name) {
+        this(name, null);
+    }
+    public User() {
+        this(null, null);
+    }
+
     public Integer getId() {
         return id;
     }

@@ -102,8 +102,19 @@ Starting with onboarding tutorial
       
 ## Step 5) Testing
   - software testing pyramid (see discussion)
-    - [ ] write some unit tests
+    - [x] write some unit tests
+      - pretty simple one with `DemoService`
+      - tried one with UserService -> does not work yet :(
     - [ ] write a module tests -> @SpringBootTest
+      - use the right Test class for import
+      - ```
+        // import org.junit.Test;	outdated in current Spring Boot version -> use jupiter version below instead
+        import org.junit.jupiter.api.Test;
+        ```
+      - the following ones are working
+        `ControllerIntegrationTest`, `SimpleSpringBootTest` 
+      - currently not working
+        - `RepositoryTest`
     - [ ] test with postman
   - guides/tutorials/hints
     - https://www.baeldung.com/spring-boot-testing
@@ -111,6 +122,12 @@ Starting with onboarding tutorial
   - what i have done 
     - add spring-boot-starter to maven
     - add h2database to maven thus we do not need a real database (h2 = in memory db)
+  - problems due to security enabled
+    - for testing the controller we need to add authorization to the mock
+    - this can be doen either by
+      - `@WithMockUser(username = "user", password = @Value("${springbootmysql.pwd_plain}"), roles = "USER")` after `@Test`
+      or via extending the request
+      - `.with(SecurityMockMvcRequestPostProcessors.httpBasic("user", "secret"))`
 
 ## Other things
   - [ ] enable spring boot framework support in IntelliJ
@@ -126,6 +143,7 @@ Starting with onboarding tutorial
       Click "Edit"
       Scroll down to "Code flow guard (CFG)" and uncheck "Override system settings"
       ```
+      - did not work, re-installed docker desktop
 
 ## Docker
   - https://spring.io/guides/gs/spring-boot-docker/
