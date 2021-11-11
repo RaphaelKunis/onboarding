@@ -2,17 +2,14 @@ package de.raphaelkunis.springbootmysql.springboottest;
 
 import de.raphaelkunis.springbootmysql.user.User;
 import de.raphaelkunis.springbootmysql.user.UserService;
-import de.raphaelkunis.springbootmysql.user.UserServiceImpl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
@@ -38,7 +35,7 @@ public class ServiceIntegrationTest {
     @Test
     public void whenValidInput_thenCreateUserAndCheck() {
         User max = new User("max", "max@home.de");
-        String result = service.addNewUser(max.getName(), max.getEmail());
+        service.addNewUser(max.getName(), max.getEmail());
         User found = null;
         for (User user : service.getAllUsers()) {
             if (user.getName().equals(max.getName()) && user.getEmail().equals(max.getEmail())) { found = user; }
