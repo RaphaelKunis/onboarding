@@ -105,7 +105,7 @@ Starting with onboarding tutorial
     - [x] write some unit tests
       - pretty simple one with `DemoService`
       - tried one with UserService -> does not work yet :(
-    - [ ] write a module tests -> @SpringBootTest
+    - [x] write a module tests -> @SpringBootTest
       - use the right Test class for import
       - ```
         // import org.junit.Test;	outdated in current Spring Boot version -> use jupiter version below instead
@@ -116,7 +116,7 @@ Starting with onboarding tutorial
       - currently not working
         - `RepositoryTest`
     - [ ] test with postman
-      - i.e. test for 
+      - i.e. test for successful http request
       ```
       pm.test("Status code is 200", function () {
       pm.response.to.have.status(200);
