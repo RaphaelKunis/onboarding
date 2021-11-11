@@ -69,7 +69,7 @@ Starting with onboarding tutorial
   - additional resources for training
     - [https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/](https://labs.micromata.de/best-practices/tutorial-spring-security/einstieg-in-spring-security/)
   
-## presentation/discussion with Andreas and Sebastian
+## presentation/discussion
   - topic 1) Service Layer - need to move ALL services from Controller to Service Layer 
     ![images/20211015_Diskussion_ServiceLayer.jpg](images/20211015_Diskussion_ServiceLayer.jpg)
     - [x] todo
@@ -116,16 +116,23 @@ Starting with onboarding tutorial
       - currently not working
         - `RepositoryTest`
     - [ ] test with postman
+      - i.e. test for 
+      ```
+      pm.test("Status code is 200", function () {
+      pm.response.to.have.status(200);
+      });
+      ```
   - guides/tutorials/hints
     - https://www.baeldung.com/spring-boot-testing
       - unit tests and spring boot tests
   - what i have done 
     - add spring-boot-starter to maven
     - add h2database to maven thus we do not need a real database (h2 = in memory db)
+    - created new properties file for tests (with h2 in memory database)
   - problems due to security enabled
     - for testing the controller we need to add authorization to the mock
     - this can be doen either by
-      - `@WithMockUser(username = "user", password = @Value("${springbootmysql.pwd_plain}"), roles = "USER")` after `@Test`
+      - `@WithMockUser(username = "user", password = "secret", roles = "USER")` after `@Test`
       or via extending the request
       - `.with(SecurityMockMvcRequestPostProcessors.httpBasic("user", "secret"))`
 
