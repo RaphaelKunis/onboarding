@@ -1,0 +1,8 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+    //pm.expect(pm.response.code).to.eql(200);
+});
+
+pm.test("Message is Hello", function () {
+    pm.expect(pm.response.text()).to.eql('Hello');
+});

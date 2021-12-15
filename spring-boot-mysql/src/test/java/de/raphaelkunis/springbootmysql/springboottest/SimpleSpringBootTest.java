@@ -3,7 +3,7 @@ package de.raphaelkunis.springbootmysql.springboottest;
 // import org.junit.Test;	outdated in current Spring Boot version -> use jupiter version below instead
 import de.raphaelkunis.springbootmysql.demo.*;
 
-import de.raphaelkunis.springbootmysql.user.User;
+//import de.raphaelkunis.springbootmysql.user.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.assertTrue;

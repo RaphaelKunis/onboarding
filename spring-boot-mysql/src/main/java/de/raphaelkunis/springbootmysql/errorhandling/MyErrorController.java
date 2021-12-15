@@ -15,4 +15,13 @@ public class MyErrorController implements ErrorController  {
         //do something like logging
         return "error";
     }
+
+    /* error page for browser in case of problems
+    * see https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error
+    */
+    @RequestMapping("/demo/error")
+    public String handleErrorDemo() {
+        //do something like logging
+        return "error demo";
+    }    
 }

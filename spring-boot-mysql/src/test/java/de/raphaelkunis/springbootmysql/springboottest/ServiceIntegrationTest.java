@@ -4,7 +4,7 @@ import de.raphaelkunis.springbootmysql.user.User;
 import de.raphaelkunis.springbootmysql.user.UserService;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
+//import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;

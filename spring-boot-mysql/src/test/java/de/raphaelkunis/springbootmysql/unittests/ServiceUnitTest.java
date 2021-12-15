@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import static org.mockito.Mockito.*;
+//import static org.mockito.Mockito.*;
 
-import javax.validation.Validation;
+//import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+//import javax.validation.ValidatorFactory;
 
-import java.util.List;
+//import java.util.List;
 
 /** Does not work  -> disabled */
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -26,7 +26,7 @@ import java.util.List;
 public class ServiceUnitTest {
 
     @MockBean
-    private UserService mockService = new UserServiceImpl();;
+    private UserService mockService = new UserServiceImpl();
 
     @MockBean
     private Validator validator = new LocalValidatorFactoryBean().getValidator();
@@ -41,6 +41,5 @@ public class ServiceUnitTest {
         String result = mockService.addNewUser("Bob","bob@home.de");
         assertEquals("Saved", result);
     }
-
 
 }

@@ -8,7 +8,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+
 //import org.springframework.security.core.userdetails.User;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,26 +22,25 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${springbootmysql.pwd_plain}")          // gets the property from application.properties
+    @Value("${springbootmysql.pwd_plain}")          // gets the property from application.properties, plain test
     private String pwd;
-    @Value("${springbootmysql.pwd_adm_plain}")
+    //@Value("${springbootmysql.pwd_adm_plain}")
+    @Value("${springbootmysql.pwd_adm_bcrypt}")     // for bcrypt test
     private String pwd_adm;
 
-    @Autowired
-    public void globalSecurityConfiguration(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-             .withUser("user").password(pwd).roles("USER").and()
-             .withUser("admin").password(pwd_adm).roles("USER","ADMIN");
-        // hints: did not work without .passwordEncoder(NoOpPasswordEncoder.getInstance())
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    /* TODO: test the snippet from Sebastian
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password(pwd).roles("USER").and()
-                .withUser("admin").password(pwd_adm).roles("USER","ADMIN");
+    // implemented with the snippet from Sebastian
+    @Autowired
+    public void globalSecurityConfiguration(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+             .withUser("user").password(pwd).roles("USER").and()
+             .withUser("admin").password(pwd_adm).roles("USER","ADMIN");
     }
-    */
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

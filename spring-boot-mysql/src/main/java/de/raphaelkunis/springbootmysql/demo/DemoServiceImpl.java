@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 public class DemoServiceImpl implements DemoService {
 
     @Override
+    public String emptyPage() {
+        return "";
+    }    
+
+    @Override
     public String sayHello() {
         return "Hello";
     }

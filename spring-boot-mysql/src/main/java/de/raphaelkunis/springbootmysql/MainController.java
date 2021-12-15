@@ -22,6 +22,12 @@ public class MainController {
     private DemoService demoService;
 
 	/* Test some new features */
+    @GetMapping(path="/")                                          // , produces = "application/plain; charset=UTF-8")
+    public @ResponseBody String emptyPage() {
+        return demoService.emptyPage();
+    }
+
+    /* Test some new features */
 	@GetMapping(path="/hello")                                          // , produces = "application/plain; charset=UTF-8")
 	public @ResponseBody String sayHello() {
 		return demoService.sayHello();
