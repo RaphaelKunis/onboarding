@@ -16,7 +16,7 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
-@Disabled
+//@Disabled
 class SimpleSpringBootTest {
 
 	@Autowired

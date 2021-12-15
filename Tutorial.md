@@ -78,17 +78,23 @@ Starting with onboarding tutorial
     - functional (mvc) or domain based (User)
     - [x] second one was chosen
       - UserService becomes Interface and UserServiceImpl was added   
-    - [ ] implement better password behaviour
+    - [x] implement better password behaviour
       - [x] move passwords to config file
-      - [ ] hash passwords with bcrypt
-      - [ ] use std password code snippet
+      - [x] hash passwords with bcrypt
+      - [x] use std password code snippet
 
       ```java
-      PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+      @Bean
+      public PasswordEncoder passwordEncoder() {
+       return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+      }
         
-      User.withUsername(user.getName())
-          .password(password.startsWith("{bcrypt}") ? password : encoder.encode(password))
-          .roles(user.getRoles().toArray(new String[0])).build();
+      @Autowired
+      public void globalSecurityConfiguration(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+            .withUser("user").password(pwd).roles("USER").and()
+            .withUser("admin").password(pwd_adm).roles("USER","ADMIN");
+      }
       ```
 
 ## Step 4) openAPI-spec for endpoints
@@ -101,27 +107,32 @@ Starting with onboarding tutorial
       - {{baseUrl}} in get-Requests -> set as variable 
       
 ## Step 5) Testing
+  - hints: 
+    - sometimes difficult to distinguish between JUnit4 and JUnit5 (especially when looking up code on the internet)
+    - but: although JUnit4 and JUnit5 can be mixed without errors they must not be mixed due to strange behaviour 
   - software testing pyramid (see discussion)
-    - [x] write some unit tests
-      - pretty simple one with `DemoService`
-      - tried one with UserService -> does not work yet :(
+    - [ ] write some unit tests
+      - [x] pretty simple one with `DemoService`
+      - [ ] tried one with UserService -> does not work yet :( -> problem ist @Autowired
     - [x] write a module tests -> @SpringBootTest
       - use the right Test class for import
       - ```
         // import org.junit.Test;	outdated in current Spring Boot version -> use jupiter version below instead
-        import org.junit.jupiter.api.Test;
+        import org.junit.jupiter.api.Test;  // JUnit5
         ```
       - the following ones are working
-        `ControllerIntegrationTest`, `SimpleSpringBootTest` 
-      - currently not working
-        - `RepositoryTest`
-    - [ ] test with postman
+        - `ControllerIntegrationTest`, 
+        - `SimpleSpringBootTest`,
+        - `ServiceIntegrationTest`
+    - [x] test with postman
       - i.e. test for successful http request
       ```
       pm.test("Status code is 200", function () {
-      pm.response.to.have.status(200);
+        pm.response.to.have.status(200);
       });
+      ...
       ```
+      - see also [spring-boot-mysql/tests_postman](./spring-boot-mysql/tests_postman)
   - guides/tutorials/hints
     - https://www.baeldung.com/spring-boot-testing
       - unit tests and spring boot tests
@@ -131,13 +142,14 @@ Starting with onboarding tutorial
     - created new properties file for tests (with h2 in memory database)
   - problems due to security enabled
     - for testing the controller we need to add authorization to the mock
-    - this can be doen either by
+    - this can be done either by
       - `@WithMockUser(username = "user", password = "secret", roles = "USER")` after `@Test`
       or via extending the request
       - `.with(SecurityMockMvcRequestPostProcessors.httpBasic("user", "secret"))`
 
 ## Other things
   - [ ] enable spring boot framework support in IntelliJ
+    - seems to work only in chargeable version  
   - Problems with docker desktop update in November
     - stuck on startup in `Docker Engine starting...` 
     - solution
@@ -154,3 +166,5 @@ Starting with onboarding tutorial
 
 ## Docker
   - https://spring.io/guides/gs/spring-boot-docker/
+  - Docker compose
+    - todo 

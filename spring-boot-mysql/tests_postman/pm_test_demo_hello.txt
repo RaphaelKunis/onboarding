@@ -5,4 +5,28 @@ pm.test("Status code is 200", function () {
 
 pm.test("Message is Hello", function () {
     pm.expect(pm.response.text()).to.eql('Hello');
+});pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+    //pm.expect(pm.response.code).to.eql(200);
+});
+
+pm.test("Test return values for id 3", function () {
+    let p_id = pm.request.url.query.toObject().id;
+    if (p_id == '3') {
+    //parse the response JSON and test three properties
+        const responseJson = pm.response.json();
+        pm.expect(String(responseJson.id)).to.eql(String(p_id));
+        pm.expect(responseJson.name).to.be.a('string');
+        pm.expect(responseJson.email).to.eql('riddler@home.de');
+    } else { // skip test
+    }
+});
+
+pm.test("Test return values for empty result id = 100", function () {
+    let p_id = pm.request.url.query.toObject().id;
+    if (p_id == '100') {
+        pm.response.to.have.status(200);
+        pm.expect(pm.response.text()).to.eql('null');
+    } else { // skip test
+    }
 });

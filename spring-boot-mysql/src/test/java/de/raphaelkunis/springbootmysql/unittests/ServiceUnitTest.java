@@ -20,7 +20,9 @@ import javax.validation.Validator;
 
 //import java.util.List;
 
-/** Does not work  -> disabled */
+/** Does not work  -> disabled
+ * What I want to test is:
+ * - test whether the UserService works standalone and a new user can be added*/
 @TestPropertySource(locations = "classpath:application-test.properties")
 @Disabled
 public class ServiceUnitTest {

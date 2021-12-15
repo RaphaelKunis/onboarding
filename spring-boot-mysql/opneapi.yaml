@@ -62,7 +62,22 @@ security:
   - BasicAuth: []  
 
 paths:
-  /demo/:
+  /demo:
+    get:
+      summary: base path. just returns 200
+      description: just the base path without any logic
+      responses:
+        '200':
+          description: 'returns empty page'
+          content:
+            # application/json:
+            #   schema:
+            #     ...
+            text/plain:
+              schema:
+                type: string
+                example: ''
+  /demo/hello:
     get:
       summary: base path. just returns 200
       description: just the base path without any logic
