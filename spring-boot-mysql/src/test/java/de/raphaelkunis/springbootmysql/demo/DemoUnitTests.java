@@ -1,4 +1,4 @@
-package de.raphaelkunis.springbootmysql.unittests;
+package de.raphaelkunis.springbootmysql.demo;
 
 import de.raphaelkunis.springbootmysql.demo.DemoService;
 import de.raphaelkunis.springbootmysql.demo.DemoServiceImpl;
@@ -6,7 +6,7 @@ import de.raphaelkunis.springbootmysql.demo.DemoServiceImpl;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SimpleUnitTests {
+public class DemoUnitTests {
 
     @Test
     public void testDemoSayHello() {

@@ -14,13 +14,14 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    /* @Autowired -> does not work for tests without SpringBootTest */
-    @Autowired
     private UserRepository userRepository;
 
-    /* @Autowired -> does not work for tests without SpringBootTest */
-    @Autowired
-    private Validator validator;
+    Validator validator;
+
+    public UserServiceImpl(UserRepository userRepository, Validator validator) {
+        this.validator = validator;
+        this.userRepository = userRepository;
+    }
 
     /** Add new user after validating the input
      * todo: return better result, i.e. the result of userRepository.findById(id) -> JSON
@@ -81,4 +82,6 @@ public class UserServiceImpl implements UserService {
         // This returns a JSON or XML with the user if exists
         return userRepository.findById(id);
     }
+
+
 }

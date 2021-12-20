@@ -147,6 +147,13 @@ Starting with onboarding tutorial
       or via extending the request
       - `.with(SecurityMockMvcRequestPostProcessors.httpBasic("user", "secret"))`
 
+## presentation/discussion on 15th December
+  - did a lot of testing things
+    - moved applications-test.properties to test/resources
+    - package structure in test is now equal to main structure
+    - implemented new class `UserServiceImplTest` to test without spring boot environment
+      - uses Mockito
+
 ## Other things
   - [ ] enable spring boot framework support in IntelliJ
     - seems to work only in chargeable version  

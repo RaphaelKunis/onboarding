@@ -1,4 +1,4 @@
-package de.raphaelkunis.springbootmysql.springboottest;
+package de.raphaelkunis.springbootmysql.user;
 
 import de.raphaelkunis.springbootmysql.user.User;
 import de.raphaelkunis.springbootmysql.user.UserService;

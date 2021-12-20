@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>de.raphaelkunis</groupId>
 	<artifactId>springbootmysql</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>springbootmysql</name>
 	<description>Demo project for Spring Boot - access relational data.</description>
 	<properties>
@@ -77,6 +77,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>16</source>
+					<target>16</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
